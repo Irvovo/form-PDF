@@ -1,0 +1,9 @@
+select.form-select {
+    background-color: #f8f9fa; 
+    border-color: #ced4da; 
+  }
+  
+  select.form-select:focus {
+    border-color: #007bff; 
+    box-shadow: 0 0 0 0.25rem rgba(38, 143, 255, 0.5);
+  }

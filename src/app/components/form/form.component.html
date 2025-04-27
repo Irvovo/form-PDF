@@ -1,0 +1,189 @@
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">Cadastro de Restaurante</h2>
+    <form [formGroup] = "cadastroForm" (ngSubmit) = "onSubmit()">
+    
+      <div class="mb-3">
+        <label for="restauranteNome" class="form-label">Nome do Restaurante</label>
+        <input type="text" class="form-control" formControlName="texto"  placeholder="Digite o nome do restaurante" required>
+        @if(enviado && campoValidator('texto')) {
+          <div class="text-danger">Nome é obrigatório.</div>
+        }
+      </div>
+  
+      <div class="mb-3">
+        <label for="restauranteTelefone" class="form-label">Telefone para contato</label>
+        <input type="tel" class="form-control" formControlName="telefone" placeholder="Digite o telefone" required>
+        @if(enviado && campoValidator('telefone')) {
+          <div class="text-danger">Telefone é obrigatório.</div>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label for="restauranteEmail" class="form-label">E-mail para cadastro no portal</label>
+        <input type="email" class="form-control" formControlName="email" placeholder="Digite o e-mail" required>
+        @if(enviado && campoValidator('email')) {
+          <div class="text-danger">Um e-mail é obrigatório.</div>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label for="restauranteEndereco" class="form-label">Endereço do estabelecimento</label>
+        <input type="text" class="form-control" formControlName="endereco" placeholder="Digite o endereço" required>
+        @if(enviado && campoValidator('endereco')) {
+          <div class="text-danger">endereço é obrigatório.</div>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label  class="form-label">Tipo de Restaurante</label>
+        <select class="form-select" formControlName="tipo" (change)="alteraFormulario($event)" required>
+          <option value="" disabled selected>Escolha o tipo de restaurante</option>
+          <option value="pizzaria">Pizzaria</option>
+          <option value="sushi">Sushi</option>
+          <option value="churrascaria">Churrascaria</option>
+          <option value="lanchonete">Lanchonete</option>
+          <option value="cafeteria">Cafeteria</option>
+        </select>
+        @if(enviado && campoValidator('tipo')){
+          <div class="text-danger">tipo de restaurante é obrigatório.</div>
+        }
+      </div>
+
+      @switch (tiposDeRestaurante){
+        @case ('pizzaria'){
+          <h3 class="mt-5 mb-3">Perguntas para pizzaria</h3>
+          <div class="mb-3">
+          <label for="" class="form-label">Qual o máximo de recheios permitidos na mesma pizza?</label>
+          <input type="text" class="form-control" formControlName="texto" placeholder="Ex: 2" required>
+          @if(enviado && campoValidator('texto')) {
+            <div class="text-danger">Este campo é obrigatório.</div>
+          }
+        </div>
+
+        <label class="form-label" >Rodízio</label>
+        <select class = "form-select" name="" id="" formControlname="" (change)="verificaValor($event, 'rodizioPizza')">
+          <option value="" disabled selected>O estabelecimento trabalha com rodízio?</option>
+          <option value="sim">Sim, trabalha.</option>
+          <option value="nao">Não, não trabalha.</option>
+          
+        </select>
+
+        <label class="form-label" >Pizzas doces e salgadas</label>
+        <select class = "form-select" name="" id="" formControlname="" (change)="verificaValor($event, 'rodizioPizza')">
+          <option value="" disabled selected>O estabelecimento trabalha com pizzas meio doces e meio salgadas?</option>
+          <option value="sim">Sim, trabalha.</option>
+          <option value="nao">Não, não trabalha.</option>
+          
+        </select>
+        
+        }
+        @case ('sushi'){
+          <h3 class="mt-5 mb-3">Perguntas para Sushi</h3>
+          <label class="form-label" >Rodízio</label>
+          <select class="form-select" name="" id="" formControlname="" (change)="verificaValor($event, 'rodizioSushi')">
+            <option value="" disabled selected>O estabelecimento trabalha com rodízio?</option>
+            <option value="sim">Sim, trabalha.</option>
+            <option value="nao">Não, não trabalha.</option>
+            
+          </select>
+          @if (respostasForm['rodizioSushi'] == 'sim') {
+            <label class="form-label" >Rodízio de pratos quentes</label>
+            <select class="form-select">
+              <option value="" disabled selected>Existe rodízio de pratos quentes separados do sushi?</option>
+              <option value="sim">Sim, existe.</option>
+              <option value="nao">Não, não existe.</option>
+              
+            </select>
+          }
+
+        }
+        @case ('churrascaria'){
+          <h3 class="mt-5 mb-3">Perguntas para churrascaria</h3>
+          <label class="form-label" >Existe diferenciação de preço para crianças ou dias da semana?</label>
+          <select class="form-select" name="" id="" formControlname="" (change)="verificaValor($event, 'precoChurrascaria')">
+            <option value="" disabled selected>Escolha</option>
+            <option value="sim">Sim.</option>
+            <option value="nao">Não.</option>
+          </select>
+          @if (respostasForm['precoChurrascaria'] == "sim") {
+            <label for="" class="form-label">Cite quais.</label>
+            <input type="text" class="form-control" formControlName="text" placeholder="Ex: Segunda, terça e quarta com valoras mais baratos" required>
+          }
+        }
+        @default {
+
+        }
+
+
+      }
+      @if (tiposDeRestaurante != null) {
+        <h3 class="mt-5 mb-3">Sistemas e integrações</h3>
+        <label class="form-label" >O Restaurante utiliza algum sistema de gestão atualmente?</label>
+          <select class="form-select" name="" id="" formControlname="" (change)="verificaValor($event, 'tiposSistema')">
+            <option value="" disabled selected>Escolha uma opção</option>
+            <option value="sim">Sim.</option>
+            <option value="nao">Não.</option>
+          </select>
+        @if(respostasForm['tiposSistema'] == "sim"){
+          <label for="" class="form-label">Qual o sistema?</label>
+          <input type="text" class="form-control" formControlName="text" placeholder="Ex: Segunda, terça e quarta com valoras mais baratos" required>
+          <div></div>
+          
+          <label class="form-label" >Existe a possibilidade de exportar o cardápio do sistema atual?</label>
+          <select class="form-select" name="" id="" formControlname="">
+            <option value="" disabled selected>Escolha uma opção</option>
+            <option value="sim">Sim.</option>
+            <option value="nao">Não.</option>
+          </select>
+
+        }
+        <label class="form-label" >Possui TeamViewer nas máquinas?</label>
+          <select class="form-select" name="" id="" formControlname="">
+            <option value="" disabled selected>Escolha uma opção</option>
+            <option value="sim">Sim.</option>
+            <option value="nao">Não.</option>
+          </select>
+          <label class="form-label" >Cobra os 10%?</label>
+          <select class="form-select" name="" id="" formControlname="">
+            <option value="" disabled selected>Escolha uma opção</option>
+            <option value="sim">Sim.</option>
+            <option value="nao">Não.</option>
+          </select>
+          <h3 class="mt-5 mb-3">Formas de pagamento</h3>
+          
+          <label class="form-label" >Quais as formas de pagamento aceitas?</label>
+          <input type="text" class="form-control" formControlName="text" placeholder="Digite as formas de pagameto aceitas" required>
+          
+          <label class="form-label" >Divisão de taxas</label>
+          <select class="form-select" name="" id="" formControlname="">
+            <option value="" disabled selected>Divide as taxas por bandeira?</option>
+            <option value="sim">Sim.</option>
+            <option value="nao">Não.</option>
+          </select>
+          <h3 class="mt-5 mb-3">Equipamentos</h3>
+          
+          <label class="form-label" >Quantos computadores são utilizados?</label>
+          <input type="text" class="form-control" formControlName="text" placeholder="Ex: 3" required>
+          
+          <label class="form-label" >Quantos celulares e SmartPOS ao todo</label>
+          <input type="text" class="form-control" formControlName="text" placeholder="Ex: 8" required>
+          
+          <label class="form-label" >Quantas impressoras possui?</label>
+          <input type="text" class="form-control" formControlName="text" placeholder="Ex: 2" required>
+          
+          <h3 class="mt-5 mb-3">Logística e Operações</h3>
+          
+          <label class="form-label" >Como é feita a divisão de impressoras?</label>
+          <input type="text" class="form-control" formControlName="text" placeholder="Ex: Cozinha, caixa e bar" required>
+         
+          <label class="form-label" >Quais são os melhores horários para mexer no sistema?</label>
+          <input type="text" class="form-control" formControlName="text" placeholder="Ex: 8hrs às 10hrs" required>
+
+      }
+
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary">Gerar PDF</button>
+      </div>
+
+    </form>
+  </div>

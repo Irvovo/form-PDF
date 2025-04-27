@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+   --primary-color: #0d6efd;
+   --secondary-color: #6c757d;
+   --primary-hover: #0b5ed7;
+   --background-gradient: linear-gradient(to bottom right, #ffffff, #f8f9fa);
+}
+a[routerLink] {
+    cursor: pointer;
+  }
