@@ -27,7 +27,7 @@ export class ExibeFormComponent implements OnInit {
     const pageWidth = doc.internal.pageSize.getWidth();
     let y = 15;
 
-    // Cabeçalho
+    
     doc.setFillColor(41, 128, 185);
     doc.rect(0, 0, pageWidth, 25, 'F');
     doc.setFont('helvetica', 'bold');
@@ -36,27 +36,27 @@ export class ExibeFormComponent implements OnInit {
     doc.text('Ficha de Restaurante', pageWidth / 2, y, { align: 'center' });
     y += 15;
 
-    // Linha divisória
+    
     doc.setDrawColor(236, 240, 241);
     doc.setLineWidth(0.5);
     doc.line(10, y, pageWidth - 10, y);
     y += 10;
 
-    // Perguntas e respostas
+    
     for (const [question, answer] of Object.entries(restaurant)) {
       if (y > 280) {
         doc.addPage();
         y = 20;
       }
 
-      // Pergunta
+      
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(12);
       doc.setTextColor(41, 128, 185);
       doc.text(question, 12, y);
       y += 6;
 
-      // Resposta
+      
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(11);
       doc.setTextColor(44, 62, 80);
@@ -64,7 +64,7 @@ export class ExibeFormComponent implements OnInit {
       y += 10;
     }
 
-    // Rodapé com numeração de páginas
+    
     const pageCount = doc.getNumberOfPages();
     for (let i = 1; i <= pageCount; i++) {
       doc.setPage(i);
@@ -73,7 +73,7 @@ export class ExibeFormComponent implements OnInit {
       doc.text(`Página ${i} de ${pageCount}`, pageWidth / 2, 290, { align: 'center' });
     }
 
-    // Nome do arquivo
+    
     const filename = (restaurant['Nome do Restaurante'] || 'ficha_restaurante') + '.pdf';
     doc.save(filename);
   }
