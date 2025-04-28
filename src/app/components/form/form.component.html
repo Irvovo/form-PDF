@@ -54,14 +54,14 @@
           <h3 class="mt-5 mb-3">Perguntas para pizzaria</h3>
           <div class="mb-3">
           <label for="" class="form-label">Qual o máximo de recheios permitidos na mesma pizza?</label>
-          <input type="text" class="form-control" formControlName="texto" placeholder="Ex: 2" required>
+          <input type="text" class="form-control" placeholder="Ex: 2" required>
           @if(enviado && campoValidator('texto')) {
             <div class="text-danger">Este campo é obrigatório.</div>
           }
         </div>
 
         <label class="form-label" >Rodízio</label>
-        <select class = "form-select" name="" id="" formControlname="" (change)="verificaValor($event, 'rodizioPizza')">
+        <select class = "form-select" (change)="verificaValor($event, 'rodizioPizza')">
           <option value="" disabled selected>O estabelecimento trabalha com rodízio?</option>
           <option value="sim">Sim, trabalha.</option>
           <option value="nao">Não, não trabalha.</option>
@@ -69,7 +69,7 @@
         </select>
 
         <label class="form-label" >Pizzas doces e salgadas</label>
-        <select class = "form-select" name="" id="" formControlname="" (change)="verificaValor($event, 'rodizioPizza')">
+        <select class = "form-select" formControlname="">
           <option value="" disabled selected>O estabelecimento trabalha com pizzas meio doces e meio salgadas?</option>
           <option value="sim">Sim, trabalha.</option>
           <option value="nao">Não, não trabalha.</option>
@@ -107,7 +107,7 @@
           </select>
           @if (respostasForm['precoChurrascaria'] == "sim") {
             <label for="" class="form-label">Cite quais.</label>
-            <input type="text" class="form-control" formControlName="text" placeholder="Ex: Segunda, terça e quarta com valoras mais baratos" required>
+            <input type="text" class="form-control" formControlName="" placeholder="Ex: Segunda, terça e quarta com valoras mais baratos" required>
           }
         }
         @default {
@@ -126,7 +126,7 @@
           </select>
         @if(respostasForm['tiposSistema'] == "sim"){
           <label for="" class="form-label">Qual o sistema?</label>
-          <input type="text" class="form-control" formControlName="text" placeholder="Ex: Segunda, terça e quarta com valoras mais baratos" required>
+          <input type="text" class="form-control" formControlName="" placeholder="Digite o sistema que o cliente utiliza" required>
           <div></div>
           
           <label class="form-label" >Existe a possibilidade de exportar o cardápio do sistema atual?</label>
@@ -152,7 +152,7 @@
           <h3 class="mt-5 mb-3">Formas de pagamento</h3>
           
           <label class="form-label" >Quais as formas de pagamento aceitas?</label>
-          <input type="text" class="form-control" formControlName="text" placeholder="Digite as formas de pagameto aceitas" required>
+          <input type="text" class="form-control" placeholder="Digite as formas de pagameto aceitas" required>
           
           <label class="form-label" >Divisão de taxas</label>
           <select class="form-select" name="" id="" formControlname="">
@@ -163,21 +163,21 @@
           <h3 class="mt-5 mb-3">Equipamentos</h3>
           
           <label class="form-label" >Quantos computadores são utilizados?</label>
-          <input type="text" class="form-control" formControlName="text" placeholder="Ex: 3" required>
+          <input type="text" class="form-control" formControlName="" placeholder="Ex: 3" required>
           
           <label class="form-label" >Quantos celulares e SmartPOS ao todo</label>
-          <input type="text" class="form-control" formControlName="text" placeholder="Ex: 8" required>
+          <input type="text" class="form-control" formControlName="" placeholder="Ex: 8" required>
           
           <label class="form-label" >Quantas impressoras possui?</label>
-          <input type="text" class="form-control" formControlName="text" placeholder="Ex: 2" required>
+          <input type="text" class="form-control" formControlName="" placeholder="Ex: 2" required>
           
           <h3 class="mt-5 mb-3">Logística e Operações</h3>
           
           <label class="form-label" >Como é feita a divisão de impressoras?</label>
-          <input type="text" class="form-control" formControlName="text" placeholder="Ex: Cozinha, caixa e bar" required>
+          <input type="text" class="form-control" formControlName="" placeholder="Ex: Cozinha, caixa e bar" required>
          
           <label class="form-label" >Quais são os melhores horários para mexer no sistema?</label>
-          <input type="text" class="form-control" formControlName="text" placeholder="Ex: 8hrs às 10hrs" required>
+          <input type="text" class="form-control" formControlName="" placeholder="Ex: 8hrs às 10hrs" required>
 
       }
 
