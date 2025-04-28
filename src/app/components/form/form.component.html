@@ -54,7 +54,7 @@
           <h3 class="mt-5 mb-3">Perguntas para pizzaria</h3>
           <div class="mb-3">
           <label for="" class="form-label">Qual o máximo de recheios permitidos na mesma pizza?</label>
-          <input type="text" class="form-control" placeholder="Ex: 2" required>
+          <input type="text" class="form-control" formControlName="" placeholder="Ex: 2" required>
           @if(enviado && campoValidator('texto')) {
             <div class="text-danger">Este campo é obrigatório.</div>
           }
