@@ -14,7 +14,6 @@ export class FormComponent  {
   cadastroForm!: FormGroup;
   enviado: boolean = false;
 
-
   respostasForm: { [key: string]: any } = {
     rodizioPizza: null,
     rodizioSushi: null,
@@ -35,8 +34,8 @@ export class FormComponent  {
 
   ngOnInit(){
     this.cadastroForm = this.fb.group({
-      texto: ['', Validators.required],
-      telefone: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],
+      texto: ['', Validators.required,],
+      telefone: ['', [Validators.required, Validators.pattern('^[0-9()-]{11,15}$')]],
       email: ['',[Validators.required, Validators.pattern(('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'))]],
       endereco: ['', Validators.required],
       tipo: ['', Validators.required],
@@ -65,10 +64,13 @@ export class FormComponent  {
   }
   
   gerarPDF(): void {
+    
     const doc = new jsPDF();
     const pageWidth = doc.internal.pageSize.getWidth();
     let y = 15;
+    
   
+    
     
     doc.setFillColor(41, 128, 185);
     doc.rect(0, 0, pageWidth, 25, 'F');
