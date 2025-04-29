@@ -36,7 +36,7 @@ export class FormComponent  {
   ngOnInit(){
     this.cadastroForm = this.fb.group({
       texto: ['', Validators.required],
-      telefone: ['', [Validators.required, Validators.pattern(('^([0-9]{11}'))]],
+      telefone: ['', [Validators.required, Validators.pattern('^[0-9]{11}$')]],
       email: ['',[Validators.required, Validators.pattern(('^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'))]],
       endereco: ['', Validators.required],
       tipo: ['', Validators.required],
