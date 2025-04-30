@@ -51,7 +51,7 @@
 
       @switch (tiposDeRestaurante){
         @case ('pizzaria'){
-          <h3 class="mt-5 mb-3">Perguntas para pizzaria</h3>
+          <h3 class="mt-5 mb-3" style="display: inline;"><i class="fa-solid fa-pizza-slice fa-x1"></i> - Perguntas para pizzaria - </h3>
           <div class="mb-3">
           <label for="" class="form-label">Qual o máximo de recheios permitidos na mesma pizza?</label>
           <input type="text" class="form-control" formControlName="" placeholder="Ex: 2" required>
@@ -78,7 +78,7 @@
         
         }
         @case ('sushi'){
-          <h3 class="mt-5 mb-3">Perguntas para Sushi</h3>
+          <h3 class="mt-5 mb-3"><i class="fa-solid fa-fish-fins fa-x1"></i> - Perguntas para Sushi -</h3>
           <label class="form-label" >Rodízio</label>
           <select class="form-select" name="" id="" formControlname="" (change)="verificaValor($event, 'rodizioSushi')">
             <option value="" disabled selected>O estabelecimento trabalha com rodízio?</option>
@@ -97,27 +97,11 @@
           }
 
         }
-        @case ('churrascaria'){
-          <h3 class="mt-5 mb-3">Perguntas para churrascaria</h3>
-          <label class="form-label" >Existe diferenciação de preço para crianças ou dias da semana?</label>
-          <select class="form-select" name="" id="" formControlname="" (change)="verificaValor($event, 'precoChurrascaria')">
-            <option value="" disabled selected>Escolha</option>
-            <option value="sim">Sim.</option>
-            <option value="nao">Não.</option>
-          </select>
-          @if (respostasForm['precoChurrascaria'] == "sim") {
-            <label for="" class="form-label">Cite quais.</label>
-            <input type="text" class="form-control" formControlName="" placeholder="Ex: Segunda, terça e quarta com valoras mais baratos" required>
-          }
-        }
-        @default {
-
-        }
 
 
       }
       @if (tiposDeRestaurante != null) {
-        <h3 class="mt-5 mb-3">Sistemas e integrações</h3>
+        <h3 class="mt-5 mb-3"> <i class="fa-solid fa-globe fa-x1"></i> - Sistemas e integrações -</h3>
         <label class="form-label" >O Restaurante utiliza algum sistema de gestão atualmente?</label>
           <select class="form-select" name="" id="" formControlname="" (change)="verificaValor($event, 'tiposSistema')">
             <option value="" disabled selected>Escolha uma opção</option>
@@ -149,7 +133,8 @@
             <option value="sim">Sim.</option>
             <option value="nao">Não.</option>
           </select>
-          <h3 class="mt-5 mb-3">Formas de pagamento</h3>
+
+          <h3 class="mt-5 mb-3"><i class="fa-solid fa-money-bill fa-x1"></i> - Formas de pagamento -</h3>
           
           <label class="form-label" >Quais as formas de pagamento aceitas?</label>
           <input type="text" class="form-control" placeholder="Digite as formas de pagameto aceitas" required>
@@ -160,7 +145,8 @@
             <option value="sim">Sim.</option>
             <option value="nao">Não.</option>
           </select>
-          <h3 class="mt-5 mb-3">Equipamentos</h3>
+          
+          <h3 class="mt-5 mb-3"><i class="fa-solid fa-desktop fa-x1"></i> - Equipamentos -</h3>
           
           <label class="form-label" >Quantos computadores são utilizados?</label>
           <input type="number" class="form-control" formControlName="" placeholder="Ex: 3" required>
@@ -171,7 +157,7 @@
           <label class="form-label" >Quantas impressoras possui?</label>
           <input type="number" class="form-control" formControlName="" placeholder="Ex: 2" required>
           
-          <h3 class="mt-5 mb-3">Logística e Operações</h3>
+          <h3 class="mt-5 mb-3"> <i class="fa-solid fa-utensils fa-x1"></i> - Logística e Operações -</h3>
           
           <label class="form-label" >Como é feita a divisão de impressoras?</label>
           <input type="text" class="form-control" formControlName="" placeholder="Ex: Cozinha, caixa e bar" required>
@@ -182,7 +168,7 @@
       }
 
       <div class="d-flex justify-content-end">
-        <button type="submit" class="btn btn-primary">Gerar PDF</button>
+        <button type="submit" class="btn btn-primary">Gerar PDF <i class="fa-solid fa-circle-arrow-down"></i></button>
       </div>
 
     </form>
